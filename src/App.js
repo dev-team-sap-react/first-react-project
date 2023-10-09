@@ -41,9 +41,9 @@ const App = () => {
       <table className="table">
         <thead>
           <tr>
+            <th scope="col">id</th>
             <th scope="col">Sys</th>
             <th scope="col">Cln</th>
-            <th scope="col">Table</th>
             <th scope="col">Appl</th>
             <th scope="col">TM</th>
             <th scope="col">Object</th>
@@ -52,6 +52,7 @@ const App = () => {
             <th scope="col">Relevant</th>
           </tr>
         </thead>
+      
         <tbody>
           {jsonData ? (
             jsonData.map((item, index) => (
