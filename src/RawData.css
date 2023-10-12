@@ -1,0 +1,15 @@
+
+.RawData {
+    text-align: left;
+}
+.left-aligned {
+    text-align: left;
+  }
+  
+  .right-aligned {
+    text-align: right;
+  }
+  .bold-text {
+    font-weight: bold;
+  }
+  
