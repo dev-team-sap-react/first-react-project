@@ -1,83 +1,181 @@
-import React, { useState } from "react";
 import "./App.css";
-import * as XLSX from "xlsx";
+import React, { useState } from "react";
+import Papa from "papaparse";
+
 
 const App = () => {
-  const [jsonData, setJsonData] = useState(null);
+  const [data, setData] = useState([]);
 
-  const handleExcelInputChange = async (e) => {
-    const files = e.target.files[0];
-    if (files) {
-      try {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const binaryString = e.target.result;
-          const workbook = XLSX.read(binaryString, {type : "binary"});
-          const sheetName = workbook.SheetNames[0];
-          const sheet = workbook.Sheets[sheetName];
-          const jsonDataXslx = XLSX.utils.sheet_to_json(sheet);
-          setJsonData(jsonDataXslx);
-          console.log(jsonData);
-          console.log(workbook);
-          console.log(sheetName);
-          console.log(sheet);
-        };
-        reader.readAsBinaryString(files);
+  function handleFile(e) {
+    const file = e.target.files[0];
+    Papa.parse(file, {
+      header: true,
+      complete: function (results) {
+        const parsedData = results.data;
 
-      } catch (error) {
-        console.error('Error reading Excel file:', error);
-      }
-    }
-  };
+        // Trim strings and convert numbers to fixed format
+        const processedData = parsedData.map((item) => {
+          const processedItem = {};
+          Object.keys(item).forEach((key) => {
+            if (typeof item[key] === "string") {
+              processedItem[key] = item[key].trim();
+            } else if (typeof item[key] === "number") {
+              processedItem[key] = item[key].toFixed(2);
+            } else {
+              processedItem[key] = item[key];
+            }
+          });
+          return processedItem;
+        });
 
-  return (
-    <div className="App">
-      <input
-        type="file"
-        accept=".csv,.xlsx,.xls"
-        onChange={(e) => handleExcelInputChange(e)}
-      />
+        setData(processedData);
+        console.log(processedData);
+        console.log(processedData[5].Records * 45000000);
+        console.log(processedData[5].id);
+      },
+    });
+  }
 
+return (
+  <div className="App">
+      <input type="file" accept=".csv" onChange={handleFile} />
       <table className="table">
         <thead>
           <tr>
-            <th scope="col">id</th>
-            <th scope="col">Sys</th>
-            <th scope="col">Cln</th>
+            <th scope="col">A</th>
             <th scope="col">Appl</th>
-            <th scope="col">TM</th>
+            <th scope="col">Cln</th>
+            <th scope="col">Component</th>
+            <th scope="col">Intent</th>
+            <th scope="col">Mult</th>
             <th scope="col">Object</th>
             <th scope="col">Object description</th>
+            <th scope="col">Package</th>
+            <th scope="col">Proposal</th>
             <th scope="col">Records</th>
-            <th scope="col">Relevant</th>
+            <th scope="col">Sys</th>
+            <th scope="col">TabCIs</th>
+            <th scope="col">Table</th>
+            <th scope="col">Table_description</th>
           </tr>
         </thead>
-      
         <tbody>
-          {jsonData ? (
-            jsonData.map((item, index) => (
-              <tr key={index}>
-                <td>{item.Sys}</td>
-                <td>{item.Cln}</td>
-                <td>{item.Table}</td>
-                <td>{item.Appl}</td>
-                <td>{item.TM}</td>
-                <td>{item.Object}</td>
-                <td>{item.Object}</td>
-                <td>{item.description}</td>
-                <td>{item.Records}</td>
-                <td>{item.Relevant}</td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="15">Please upload a readable data</td>
+          {data.map((item, index) => (
+            <tr key={index} className="left-aligned">
+              <td>{item.A}</td>
+              <td>{item.Appl}</td>
+              <td>{item.Cln}</td>
+              <td>{item.Component}</td>
+              <td>{item.Intent}</td>
+              <td>{item.Mult}</td>
+              <td>{item.Object}</td>
+              <td>{item.Object_description}</td>
+              <td>{item.Package}</td>
+              <td>{item.Proposal}</td>
+              <td className="right-aligned bold-text" >{item.Records}</td>
+              <td>{item.Sys}</td>
+              <td>{item.TabCls}</td>
+              <td>{item.Table}</td>
+              <td>{item.Table_description}</td>
             </tr>
-          )}
+          ))}
         </tbody>
       </table>
     </div>
   );
+  // const App = () => {
+    //   const [data, setData] = useState([]);
+    
+    //   function handleFile(e) {
+      //     const file = e.target.files[0];
+      //     Papa.parse(file, {
+        //       header: true,
+        //       complete: function (results) {
+          //         const data = [];
+          //         const parsedData = JSON.parse(results.data);
+          
+          //         Object.keys(parsedData).forEach((key) => {
+            //           if (typeof parsedData[key] === "string") {
+              //             parsedData[key] = parsedData[key].trim();
+              //           }
+              //         });
+              //         const trimmedData = JSON.stringify(parsedData);
+              
+              //         setData(trimmedData);
+              //         // Object.keys(parsedData).forEach((key) => {
+                //         //   if (typeof parsedData[key] === 'number'){
+                  //         //     parsedData[key] = parsedData[key].toFixed(2);
+                  //         //   }
+                  //         // });
+                  
+                  //         setData(data);
+                  //         //setData(results.data);
+                  //         console.log(data[1].Records * 555);
+                  //         console.log(data);
+                  //       },
+                  //     });
+                  //   }
+                  //<div>{data[1]*5} Kere Tekrarlandi.</div>
+                  
+                  // return (
+                    //   <div>
+                    //     <input type="file" accept=".csv" onChange={handleCSVInputChange} />
+    
+    //     {data ? (
+      //       <div className="json-container">
+      //         <pre>{JSON.stringify(data, null, 2)}</pre>
+      //       </div>
+      //     ) : (
+        //       <p>Please select a CSV file.</p>
+        //     )}
+        //   </div>
+        // );
+        
+        
+        // const parsedData = JSON.parse(results.data);
+        
+        // Object.keys(parsedData).forEach((key) => {
+          //   if (typeof parsedData[key] === "string") {
+            //     parsedData[key] = parsedData[key].trim();
+  //   }
+  // });
+  // const trimmedData = JSON.stringify(parsedData);
+  
+  // setData(trimmedData);
 };
-
 export default App;
+
+//import JSON from "json";
+
+// @ts-check
+
+// function trimConvertDataToJson(e) {
+  //   //let dataToTrim = e;
+  //   let lines = e.split("\n");
+  //   let headers = lines[0].split(",");
+  //   const result = [];
+  
+  //   for (let i = 1; i < lines.length; i++) {
+  //     const obj = {};
+  //     const currentLine = lines[i].split(",");
+  //     for (let j = 1; j < headers.length; j++) {
+    //       obj[headers[j].trim()] = currentLine[j].trim();
+  //     }
+  //     result.push(obj);
+  //   }
+  
+  //   return result;
+  // }
+  // const handleCSVInputChange = (event) => {
+    //   const file = event.target.files[0];
+    //   const reader = new FileReader();
+    
+    //   reader.onload = (e) => {
+      //     const csvData = e.target.result;
+      //     const jsonData = trimConvertDataToJson(csvData);
+      //     setData(jsonData);
+      //     console.log(data);
+      //   };
+      
+      //   reader.readAsText(file);
+      // };
