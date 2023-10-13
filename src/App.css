@@ -47,3 +47,53 @@
 .bold-text {
   font-weight: bold;
 }
+/* RawData.css */
+
+.RawData {
+  padding: 20px;
+}
+
+input {
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+thead {
+  background-color: #f2f2f2;
+}
+
+.navbar {
+  background-color: #555;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Adjust margin-top based on your header's height */
+.table.body {
+  margin-top: 60px;
+}
+
+/* Add other styles as needed */
+

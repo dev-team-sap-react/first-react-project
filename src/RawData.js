@@ -1,9 +1,8 @@
-
 import "./RawData.css";
 import React, { useState } from "react";
 import Papa from "papaparse";
 
-export default function RawData() {
+export default function RawData({ processedData, setProcessedData }) {
   const [data, setData] = useState([]);
 
   function handleFile(e) {
@@ -27,7 +26,7 @@ export default function RawData() {
           });
           return processedItem;
         });
-
+        setProcessedData(processedData);
         setData(processedData);
         console.log(processedData);
         console.log(processedData[5].Records * 45000000);
@@ -38,10 +37,15 @@ export default function RawData() {
 
   return (
     <div className="RawData">
-      <input type="file" accept=".csv" onChange={handleFile} />
-      <table className="table">
-        <thead>
-          <tr>
+      <input
+        type="file"
+        accept=".csv"
+        onChange={handleFile}
+        className="navbar"
+      />
+      <table className="table body">
+        <thead className="text-font-xlarge">
+          <tr className="">
             <th scope="col">A</th>
             <th scope="col">Appl</th>
             <th scope="col">Cln</th>
@@ -51,15 +55,19 @@ export default function RawData() {
             <th scope="col">Object</th>
             <th scope="col">Object description</th>
             <th scope="col">Package</th>
-            <th scope="col">Proposal</th>
-            <th scope="col">Records</th>
+            <th scope="col" className="text-color-blue">
+              Proposal
+            </th>
+            <th scope="col" className="right-aligned text-color-red">
+              Records
+            </th>
             <th scope="col">Sys</th>
             <th scope="col">TabCIs</th>
             <th scope="col">Table</th>
             <th scope="col">Table_description</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="table body">
           {data.map((item, index) => (
             <tr key={index} className="left-aligned">
               <td>{item.A}</td>
@@ -71,8 +79,10 @@ export default function RawData() {
               <td>{item.Object}</td>
               <td>{item.Object_description}</td>
               <td>{item.Package}</td>
-              <td>{item.Proposal}</td>
-              <td className="right-aligned bold-text">{item.Records}</td>
+              <td className="bold-text text-color-blue">{item.Proposal}</td>
+              <td className="right-aligned bold-text text-color-red">
+                {item.Records}
+              </td>
               <td>{item.Sys}</td>
               <td>{item.TabCls}</td>
               <td>{item.Table}</td>
@@ -83,62 +93,6 @@ export default function RawData() {
       </table>
     </div>
   );
-  // const App = () => {
-  //   const [data, setData] = useState([]);
 
-  //   function handleFile(e) {
-  //     const file = e.target.files[0];
-  //     Papa.parse(file, {
-  //       header: true,
-  //       complete: function (results) {
-  //         const data = [];
-  //         const parsedData = JSON.parse(results.data);
 
-  //         Object.keys(parsedData).forEach((key) => {
-  //           if (typeof parsedData[key] === "string") {
-  //             parsedData[key] = parsedData[key].trim();
-  //           }
-  //         });
-  //         const trimmedData = JSON.stringify(parsedData);
-
-  //         setData(trimmedData);
-  //         // Object.keys(parsedData).forEach((key) => {
-  //         //   if (typeof parsedData[key] === 'number'){
-  //         //     parsedData[key] = parsedData[key].toFixed(2);
-  //         //   }
-  //         // });
-
-  //         setData(data);
-  //         //setData(results.data);
-  //         console.log(data[1].Records * 555);
-  //         console.log(data);
-  //       },
-  //     });
-  //   }
-  //<div>{data[1]*5} Kere Tekrarlandi.</div>
-
-  // return (
-  //   <div>
-  //     <input type="file" accept=".csv" onChange={handleCSVInputChange} />
-
-  //     {data ? (
-  //       <div className="json-container">
-  //         <pre>{JSON.stringify(data, null, 2)}</pre>
-  //       </div>
-  //     ) : (
-  //       <p>Please select a CSV file.</p>
-  //     )}
-  //   </div>
-  // );
-
-  // const parsedData = JSON.parse(results.data);
-
-  // Object.keys(parsedData).forEach((key) => {
-  //   if (typeof parsedData[key] === "string") {
-  //     parsedData[key] = parsedData[key].trim();
-  //   }
-  // });
-  // const trimmedData = JSON.stringify(parsedData);
-
-  // setData(trimmedData);
 }
