@@ -1,0 +1,66 @@
+
+/* App.css */
+
+body {
+  margin: 50;
+  padding: 100;
+  font-family: 'Arial', sans-serif, l ;
+}
+
+.header {
+  
+  
+  
+  position: fixed;
+
+ 
+ 
+}
+
+.navbar {
+  background-color: #555;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  top: 60px; /* Adjust based on your header's height */
+  z-index: 1000; /* Ensure the navbar is above other elements */
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Add styles for your other components as needed */
+
+.content {
+  margin-top: 60px; /* Adjust based on your navbar's height */
+  padding: 16px;
+}
+
+
+.RawData {
+    text-align: left;
+}
+.left-aligned {
+    text-align: left;
+  }
+  
+  .right-aligned {
+    text-align: right;
+  }
+  .bold-text {
+    font-weight: bold;
+  }
+  .text-color-red {
+    color: red;
+  } .text-color-blue {
+    color: blue;
+  }.text-font-xlarge {
+    font-size: x-large;
+  }
+  
