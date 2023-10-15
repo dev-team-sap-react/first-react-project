@@ -2,7 +2,7 @@ import React from 'react';
 import { Container} from 'reactstrap';
 import { NavLink} from 'react-router-dom';
 
-import 'header.css';
+import './header.css';
 
 const nav_links = [
   {
