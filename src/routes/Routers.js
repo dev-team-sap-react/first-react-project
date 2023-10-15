@@ -1,9 +1,9 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import Home from '../pages/Home';
+import Home from '../pages/Home/Home';
 import RawData from '../pages/RawData/RawData';
-import Evaluation from '../pages/Evalution/Evaluation';
+import Evaluation from '../pages/Evaluation/Evaluation';
 
 
 

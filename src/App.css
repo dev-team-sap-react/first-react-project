@@ -54,7 +54,7 @@
 }
 
 input {
-  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 table {
@@ -72,7 +72,7 @@ thead {
   background-color: #f2f2f2;
 }
 
-.navbar {
+/*.navbar {
   background-color: #555;
   overflow: hidden;
   position: fixed;
@@ -91,9 +91,6 @@ thead {
 }
 
 /* Adjust margin-top based on your header's height */
-.table.body {
-  margin-top: 60px;
-}
 
 /* Add other styles as needed */
 

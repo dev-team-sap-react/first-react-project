@@ -41,7 +41,6 @@ export default function RawData({ processedData, setProcessedData }) {
         type="file"
         accept=".csv"
         onChange={handleFile}
-        className="navbar"
       />
       <table className="table body">
         <thead className="text-font-xlarge">

@@ -7,24 +7,15 @@ body {
   font-family: 'Arial', sans-serif, l ;
 }
 
-.header {
-  
-  
-  
-  position: fixed;
-
- 
- 
-}
-
+/*
 .navbar {
   background-color: #555;
   overflow: hidden;
   position: fixed;
   width: 100%;
   top: 60px; /* Adjust based on your header's height */
-  z-index: 1000; /* Ensure the navbar is above other elements */
-}
+  /*z-index: 1000;  Ensure the navbar is above other elements 
+} 
 
 .navbar a {
   float: left;
@@ -33,7 +24,7 @@ body {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-}
+} */
 
 /* Add styles for your other components as needed */
 
