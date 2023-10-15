@@ -5,6 +5,8 @@ import Home from '../pages/Home/Home';
 import RawData from '../pages/RawData/RawData';
 import Evaluation from '../pages/Evaluation/Evaluation';
 import {ApexChart} from '../pages/ApexChart/ApexChart';
+import TeamSlider from '../pages/TeamSlider/TeamSlider';
+
 
 
 const Routers = () => {
@@ -15,6 +17,7 @@ const Routers = () => {
     <Route path='/rawData' element={ <RawData/> } />
     <Route path='/evaluation' element={ <Evaluation/> } />
     <Route path='/apexchart' element={ <ApexChart/> } />
+    <Route path='/teamslider' element={ <TeamSlider/> } />
    </Routes>
   );
 };

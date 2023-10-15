@@ -22,6 +22,11 @@ const nav_links = [
     display: 'ApexChart',
     path: '/apexchart'
   },
+  {
+    display: 'TeamSlider',
+    path: '/teamslider'
+  },
+  
 ];
 
 const Header = () => {
