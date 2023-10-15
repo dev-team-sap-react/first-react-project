@@ -2,6 +2,7 @@ import React from 'react';
 import { Container} from 'reactstrap';
 import { NavLink} from 'react-router-dom';
 
+import logo from '../../assets/ay.png';
 import './header.css';
 
 const nav_links = [
@@ -14,7 +15,7 @@ const nav_links = [
     path: '/rawData'
   },
   {
-    display: 'evaluation',
+    display: 'Evaluation',
     path: '/evaluation'
   },
 ];
@@ -25,9 +26,11 @@ const Header = () => {
   return (
     <header className="header">
       <Container>
-        <div className="nav_wrapper d-flex align-items-center justify-content-between">
+        <div className="d-flex flex-row align-items-center justify-content-between">
           <div className="logo">
-            <h5>Aa Gmbh</h5>
+              <img src={logo} 
+                  style={{width:'50px'}} alt=' logo' />
+              <h5>Consulting People Gmbh</h5>
           </div>
       
 {/* ==================  menu ================= */}
