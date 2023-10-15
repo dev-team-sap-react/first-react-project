@@ -18,6 +18,10 @@ const nav_links = [
     display: 'Evaluation',
     path: '/evaluation'
   },
+  {
+    display: 'ApexChart',
+    path: '/apexchart'
+  },
 ];
 
 const Header = () => {
