@@ -26,6 +26,10 @@ const nav_links = [
     display: 'TeamSlider',
     path: '/teamslider'
   },
+  {
+    display: 'BootstrapTable',
+    path: '/bootstraptable'
+  },
   
 ];
 
