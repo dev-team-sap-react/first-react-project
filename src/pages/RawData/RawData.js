@@ -2,7 +2,7 @@ import "./RawData.css";
 import React, { useState } from "react";
 import Papa from "papaparse";
 
-export default function RawData({ processedData, setProcessedData }) {
+export default function RawData() {
   const [data, setData] = useState([]);
 
   function handleFile(e) {
@@ -26,7 +26,6 @@ export default function RawData({ processedData, setProcessedData }) {
           });
           return processedItem;
         });
-        setProcessedData(processedData);
         setData(processedData);
         console.log(processedData);
         console.log(processedData[5].Records * 45000000);
