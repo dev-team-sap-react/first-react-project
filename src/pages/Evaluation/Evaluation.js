@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useContext} from "react";
+import { AppContext } from "../../AppContext";
 
 export default function Evaluation(){
-const processedData = [{"A":"a", "Appl":"b", "Cln":"c"}];
+  const {processedData} = useContext(AppContext);
     return (
         <div className="RawData">
           

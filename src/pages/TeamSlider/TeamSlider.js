@@ -9,7 +9,7 @@ import { useContext } from "react";
 import { AppContext } from "../../AppContext";
 
 const TeamSlider = () => {
-    const {loadedEmployees} = useContext(AppContext);
+    const {processedData} = useContext(AppContext);
     const settings = {
         dots:true,
         autoplay:true,
@@ -23,20 +23,20 @@ const TeamSlider = () => {
   return (
     <Slider {...settings} style={{height:"250px"}}>
         {
-            loadedEmployees.map((employee)=>{
+            processedData.map((item)=>{
 
-                return <div key={employee.employeeID}>
+                return <div key={item.proposal}>
 
                 <div>
-                    <p className="review-text">{`Hey, Ich bin ${employee.firstName}  
-                    ${employee.lastName}. `}</p>
+                    <p className="review-text">{`Hey, Ich bin ${item.Appl}  
+                    ${item.A}. `}</p>
                 </div>
                 <div className="d-flex align-items-center justify-content-center gap-3 mb-5">
                     <img src={ava01} alt={ava01} style={{width:"250px"}}/>
                 </div>
                 <div className="slider-content d-flex align-items-center justify-content-center gap-3">
 
-                    <h6>{employee.title}</h6>
+                    <h6>{item.table}</h6>
         
                 </div>
                 </div>

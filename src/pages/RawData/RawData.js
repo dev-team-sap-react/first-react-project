@@ -1,9 +1,11 @@
 import "./RawData.css";
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import Papa from "papaparse";
 
+import { AppContext } from "../../AppContext";
+
 export default function RawData() {
-  const [data, setData] = useState([]);
+  const {processedData, setProcessedData} = useContext(AppContext);
 
   function handleFile(e) {
     const file = e.target.files[0];
@@ -13,7 +15,7 @@ export default function RawData() {
         const parsedData = results.data;
 
         // Trim strings and convert numbers to fixed format
-        const processedData = parsedData.map((item) => {
+        const processedDataRaw = parsedData.map((item) => {
           const processedItem = {};
           Object.keys(item).forEach((key) => {
             if (typeof item[key] === "string") {
@@ -26,10 +28,7 @@ export default function RawData() {
           });
           return processedItem;
         });
-        setData(processedData);
-        console.log(processedData);
-        console.log(processedData[5].Records * 45000000);
-        console.log(processedData[5].id);
+        setProcessedData(processedDataRaw);
       },
     });
   }
@@ -66,7 +65,7 @@ export default function RawData() {
           </tr>
         </thead>
         <tbody className="table body">
-          {data.map((item, index) => (
+          {processedData.map((item, index) => (
             <tr key={index} className="left-aligned">
               <td>{item.A}</td>
               <td>{item.Appl}</td>
