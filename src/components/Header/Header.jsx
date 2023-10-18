@@ -30,6 +30,10 @@ const nav_links = [
     display: 'BootstrapTable',
     path: '/bootstraptable'
   },
+  {
+    display: 'Recharts',
+    path: '/recharts'
+  },
   
 ];
 
