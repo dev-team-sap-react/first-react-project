@@ -48,10 +48,12 @@ body {
     font-weight: bold;
   }
   .text-color-red {
-    color: red;
-  } .text-color-blue {
-    color: blue;
-  }.text-font-xlarge {
-    font-size: x-large;
+    color: red !important;
+  } 
+  .text-color-blue {
+    color: blue !important;
+  }
+  .text-font-xlarge {
+    font-size: x-large !important;
   }
   
