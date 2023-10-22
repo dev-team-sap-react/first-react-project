@@ -1,24 +1,23 @@
 import { Legend, PieChart, Pie, Cell, LabelList} from "recharts";
-
+import React, {useContext} from "react";
+import { AppContext } from "../../AppContext";
 const Recharts = () => {
-
-const pieData = [
-    {recordName:"A", count:30, },
-    {recordName:"B", count:40, },
-    {recordName:"c", count:55, } , 
-    {recordName:"d", count:78, } , 
-    {recordName:"e", count:43, } , 
-    {recordName:"f", count:23, } , 
-    {recordName:"g", count:125, } ,  
-    {recordName:"h", count:43, } , 
-    {recordName:"i", count:23, } , 
-    {recordName:"j", count:125, } ,  
-    {recordName:"k", count:43, } , 
-    {recordName:"l", count:23, } , 
-    {recordName:"m", count:125, } ,  
-];
-//const pieData = {"A":30, "B":40, "C":35, "D":50, "E":49, "F":60, "G":70, "H":91, "J":125, "K":30, "L":45, "M":65};
-
+  const {ComputeSum} = useContext(AppContext);
+  const data = [
+    {"Table":"CE1000", "Records":"30.000"}, 
+    {"Table":"CE1001", "Records":"40.111.111"}, 
+    {"Table":"CE1000", "Records":"30.000"}, 
+    {"Table":"CE1000", "Records":"30.000"}, 
+    {"Table":"CE1001", "Records":"30"}, 
+    {"Table":"CE1000", "Records":"333"}, 
+    {"Table":"CE1002", "Records":"30.000.111"}, 
+    {"Table":"CE1004", "Records":"30.000"}, 
+    {"Table":"CE1000", "Records":"30.000"}, 
+    {"Table":"CE1003", "Records":"30.000"}, 
+    {"Table":"CE1000", "Records":"30.000"}
+  ];
+  const pieData = ComputeSum(data);
+  console.log(pieData);
 const COLORS = [
     "#0088fe",
     "#00c49f",
@@ -48,7 +47,7 @@ return (
                 labelLine={false}
                 outerRadius={90}
                 fill="#8884d8"
-                dataKey="count"
+                dataKey="records"
                 nameKey="RecordName"
                 label
             >
