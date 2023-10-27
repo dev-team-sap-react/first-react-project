@@ -19,18 +19,6 @@ const nav_links = [
     path: '/evaluation'
   },
   {
-    display: 'ApexChart',
-    path: '/apexchart'
-  },
-  {
-    display: 'TeamSlider',
-    path: '/teamslider'
-  },
-  {
-    display: 'BootstrapTable',
-    path: '/bootstraptable'
-  },
-  {
     display: 'Recharts',
     path: '/recharts'
   },
